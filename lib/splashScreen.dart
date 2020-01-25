@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _iconAnimationController = AnimationController(
-        vsync: this, duration: new Duration(milliseconds: 2200));
+        vsync: this, duration: new Duration(milliseconds: 5000));
     _iconAnimation = new CurvedAnimation(
         parent: _iconAnimationController, curve: Curves.easeIn);
     _iconAnimation.addListener(() => this.setState(() {}));

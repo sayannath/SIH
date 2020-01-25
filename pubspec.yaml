@@ -28,6 +28,8 @@ dependencies:
   image_picker:
   sqflite:
   path_provider:
+  intl:
+    
     
 
 dev_dependencies:
