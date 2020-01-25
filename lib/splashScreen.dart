@@ -59,7 +59,12 @@ class _SplashScreenState extends State<SplashScreen>
                   fontSize: 20,
                   fontFamily: "Roboto",
                 ),
-              )
+              ),
+              Icon(
+                Icons.spa,
+                color: Colors.green,
+                size: 40.0,
+              ),
             ],
           ),
         ),
