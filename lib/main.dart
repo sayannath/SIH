@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> _optionsDialogBox() {
     return showDialog(
         context: context,
-        builder: (BuildContext context) {
+        builder: (BuildContext context) { 
           return AlertDialog(
             backgroundColor: Colors.red,
             shape: RoundedRectangleBorder(
@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   GestureDetector(
                     child: Text(
-                      'Take a Picture',
+                      'Click a Picture',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 20,

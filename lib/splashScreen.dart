@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:location_camera/main.dart';
+import 'package:location_camera/main.dart';-
 import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
