@@ -56,14 +56,77 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  showClearButton(){
+    if(_image != null) {
+      return RaisedButton(
+        onPressed: (){
+          setState(() {
+            _image = null;
+            });
+          },
+        child: Text(
+          'Clear Image'
+          ),
+        );
+    }
+    else {
+      return Container();
+    }
+  }
+
+  showLocation(){
+    if(_image != null){
+      _displayCurrentLocation();
+      return Container(
+        child: Column(
+          children: <Widget>[
+            // RaisedButton(
+            //   onPressed: _displayCurrentLocation,
+            //   color: Colors.green,
+            //   textColor: Colors.white,
+            //   padding: const EdgeInsets.all(10.0),
+            //   shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.circular(10),
+            // ),
+            // child: Text(
+            //   'Get Location',
+            //   style: TextStyle(
+            //     fontFamily: "Roboto",
+            //     fontWeight: FontWeight.bold,
+            //     fontSize: 20,
+            //     ),
+            //   ),
+            // ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+            ),
+            Text(
+              "Latitude:  ${_location.latitude}\n"
+              "Longitude: ${_location.longitude}",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                fontFamily: "Roboto",
+                ),
+              ),
+            ],
+          ),
+        );
+      }
+      else {
+        return Container();
+      }
+  }
+
   Future<void> _optionsDialogBox() {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Colors.red,
+            backgroundColor: Colors.black38,
             shape: RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(30.0),
+              borderRadius: new BorderRadius.circular(10.0),
             ),
             content: SingleChildScrollView(
               child: ListBody(
@@ -105,6 +168,7 @@ class _HomePageState extends State<HomePage> {
         title: Text('Smart India Hackathon'),
       ),
       body: Container(
+        height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -117,44 +181,53 @@ class _HomePageState extends State<HomePage> {
                           color: Colors.white,
                           fontFamily: "Roboto"),
                     )
-                  : Image.file(_image),
+                  : Container(
+                    width: 400.0,
+                    height: 400.0,
+                    child: Image.file(_image),
+                  ),
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
             ),
-            Container(
-              child: Column(
-                children: <Widget>[
-                  RaisedButton(
-                    onPressed: _displayCurrentLocation,
-                    color: Colors.green,
-                    textColor: Colors.white,
-                    padding: const EdgeInsets.all(10.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Text('Get Location',
-                        style: TextStyle(
-                            fontFamily: "Roboto",
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20)),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                  ),
-                  Text(
-                    "Latitude:  ${_location.latitude}\n"
-                    "Longitude: ${_location.longitude}",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      fontFamily: "Roboto",
-                    ),
-                  ),
-                ],
-              ),
+            showLocation(),
+            // Container(
+            //   child: Column(
+            //     children: <Widget>[
+            //       RaisedButton(
+            //         onPressed: _displayCurrentLocation,
+            //         color: Colors.green,
+            //         textColor: Colors.white,
+            //         padding: const EdgeInsets.all(10.0),
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(10),
+            //         ),
+            //         child: Text('Get Location',
+            //             style: TextStyle(
+            //                 fontFamily: "Roboto",
+            //                 fontWeight: FontWeight.bold,
+            //                 fontSize: 20)),
+            //       ),
+            //       Padding(
+            //         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+            //       ),
+            //       Text(
+            //         "Latitude:  ${_location.latitude}\n"
+            //         "Longitude: ${_location.longitude}",
+            //         style: TextStyle(
+            //           color: Colors.white,
+            //           fontWeight: FontWeight.bold,
+            //           fontSize: 20,
+            //           fontFamily: "Roboto",
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            SizedBox(
+              height: 50.0,
             ),
+            showClearButton(),
           ],
         ),
       ),
