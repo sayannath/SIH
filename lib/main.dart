@@ -65,21 +65,22 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  showClearButton(){
-    if(_image != null) {
-      return RaisedButton(
+  showFloatingActionButton(){
+    if(_image == null){
+      return FloatingActionButton(
+        child: Icon(Icons.add_a_photo),
+        tooltip: 'Open Camera',
+        onPressed: _optionsDialogBox,
+      );
+    } else {
+      return FloatingActionButton(
+        child: Icon(Icons.close),
         onPressed: (){
           setState(() {
             _image = null;
-            });
-          },
-        child: Text(
-          'Clear Image'
-          ),
-        );
-    }
-    else {
-      return Container();
+          });
+        },
+      );
     }
   }
 
@@ -157,7 +158,6 @@ class _HomePageState extends State<HomePage> {
         title: Text('Smart India Hackathon'),
       ),
       body: Container(
-        height: double.infinity,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -179,18 +179,10 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
             ),
             showLocation(),
-            SizedBox(
-              height: 30.0,
-            ),
-            showClearButton(),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_a_photo),
-        tooltip: 'Open Camera',
-        onPressed: _optionsDialogBox,
-      ),
+      floatingActionButton: showFloatingActionButton(),
     );
   }
 }
