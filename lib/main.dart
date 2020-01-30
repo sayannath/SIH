@@ -14,7 +14,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      theme: ThemeData(
+        backgroundColor: Colors.white,
+        primarySwatch: Colors.indigo,
+        accentColor: Colors.indigo,
+        brightness: Brightness.light,
+      ),
+      darkTheme: ThemeData(
+        backgroundColor: Colors.black,
+        brightness: Brightness.dark,
+      ),
       home: SplashScreen(),
     );
   }
@@ -80,23 +89,6 @@ class _HomePageState extends State<HomePage> {
       return Container(
         child: Column(
           children: <Widget>[
-            // RaisedButton(
-            //   onPressed: _displayCurrentLocation,
-            //   color: Colors.green,
-            //   textColor: Colors.white,
-            //   padding: const EdgeInsets.all(10.0),
-            //   shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.circular(10),
-            // ),
-            // child: Text(
-            //   'Get Location',
-            //   style: TextStyle(
-            //     fontFamily: "Roboto",
-            //     fontWeight: FontWeight.bold,
-            //     fontSize: 20,
-            //     ),
-            //   ),
-            // ),
             Padding(
               padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
             ),
@@ -104,7 +96,6 @@ class _HomePageState extends State<HomePage> {
               "Latitude:  ${_location.latitude}\n"
               "Longitude: ${_location.longitude}",
               style: TextStyle(
-                color: Colors.white,
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
                 fontFamily: "Roboto",
@@ -124,7 +115,7 @@ class _HomePageState extends State<HomePage> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: Colors.black38,
+            backgroundColor: Theme.of(context).backgroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: new BorderRadius.circular(10.0),
             ),
@@ -135,7 +126,6 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Take a Picture',
                       style: TextStyle(
-                        color: Colors.white,
                         fontSize: 20,
                       ),
                     ),
@@ -148,7 +138,6 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Choose from Gallery',
                       style: TextStyle(
-                        color: Colors.white,
                         fontSize: 20,
                       ),
                     ),
@@ -178,7 +167,6 @@ class _HomePageState extends State<HomePage> {
                       'No Image is Selected.',
                       style: TextStyle(
                           fontSize: 20,
-                          color: Colors.white,
                           fontFamily: "Roboto"),
                     )
                   : Container(
@@ -191,48 +179,14 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.fromLTRB(0, 0, 0, 30),
             ),
             showLocation(),
-            // Container(
-            //   child: Column(
-            //     children: <Widget>[
-            //       RaisedButton(
-            //         onPressed: _displayCurrentLocation,
-            //         color: Colors.green,
-            //         textColor: Colors.white,
-            //         padding: const EdgeInsets.all(10.0),
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(10),
-            //         ),
-            //         child: Text('Get Location',
-            //             style: TextStyle(
-            //                 fontFamily: "Roboto",
-            //                 fontWeight: FontWeight.bold,
-            //                 fontSize: 20)),
-            //       ),
-            //       Padding(
-            //         padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-            //       ),
-            //       Text(
-            //         "Latitude:  ${_location.latitude}\n"
-            //         "Longitude: ${_location.longitude}",
-            //         style: TextStyle(
-            //           color: Colors.white,
-            //           fontWeight: FontWeight.bold,
-            //           fontSize: 20,
-            //           fontFamily: "Roboto",
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
             SizedBox(
-              height: 50.0,
+              height: 30.0,
             ),
             showClearButton(),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.red,
         child: Icon(Icons.add_a_photo),
         tooltip: 'Open Camera',
         onPressed: _optionsDialogBox,
