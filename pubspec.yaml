@@ -29,6 +29,7 @@ dependencies:
   sqflite:
   path_provider:
   intl:
+  dartpedia:
     
     
 
