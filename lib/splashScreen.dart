@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen>
   void initState() {
     super.initState();
     _iconAnimationController = AnimationController(
-        vsync: this, duration: new Duration(milliseconds: 5000));
+        vsync: this, duration: new Duration(milliseconds: 2000));
     _iconAnimation = new CurvedAnimation(
         parent: _iconAnimationController, curve: Curves.easeIn);
     _iconAnimation.addListener(() => this.setState(() {}));
@@ -39,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen>
     return Scaffold(
         body: Center(
       child: Container(
-        color: Colors.black,
+        color: Theme.of(context).backgroundColor,
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -47,11 +47,13 @@ class _SplashScreenState extends State<SplashScreen>
               Text(
                 'Smart India Hackathon',
                 style: TextStyle(
-                  color: Colors.white,
                   fontFamily: "Roboto",
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
                 ),
+              ),
+              SizedBox(
+                height: 10.0,
               ),
               Text(
                 'Crop Detection App',
@@ -59,6 +61,9 @@ class _SplashScreenState extends State<SplashScreen>
                   fontSize: 20,
                   fontFamily: "Roboto",
                 ),
+              ),
+              SizedBox(
+                height: 100.0,
               ),
               Icon(
                 Icons.spa,
